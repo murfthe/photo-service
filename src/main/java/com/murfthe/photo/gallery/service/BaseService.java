@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
 import java.util.Date;
+import java.util.List;
 
 public abstract class BaseService<T extends BaseModel> {
 
@@ -20,6 +21,7 @@ public abstract class BaseService<T extends BaseModel> {
     public T save(T entity) {
         entity.setCreated(new Date());
         entity.setUpdated(new Date());
+        entity.setDeleted(false);
         return mongoTemplate.save(entity);
     }
 
@@ -28,4 +30,12 @@ public abstract class BaseService<T extends BaseModel> {
         return mongoTemplate.remove(query, getEntityClass());
     }
 
+    public T get(ObjectId id) {
+        return mongoTemplate.findById(id, getEntityClass());
+    }
+
+    public List<T> all() {
+        Query query = new Query(Criteria.where("deleted").is(false));
+        return mongoTemplate.find(query, getEntityClass());
+    }
 }

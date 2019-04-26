@@ -1,5 +1,6 @@
 package com.murfthe.photo.gallery.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
@@ -13,8 +14,14 @@ public class BaseModel implements Serializable {
     private String description;
     private Date created;
     private Date updated;
+    private boolean deleted;
 
-    public ObjectId getId() {
+    public String getId() {
+        return id.toString();
+    }
+
+    @JsonIgnore
+    public ObjectId getObjectId() {
         return id;
     }
 
@@ -52,5 +59,13 @@ public class BaseModel implements Serializable {
 
     public void setUpdated(Date updated) {
         this.updated = updated;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }

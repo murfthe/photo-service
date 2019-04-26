@@ -1,6 +1,6 @@
 package com.murfthe.photo.gallery.service.photospost;
 
-import com.murfthe.photo.gallery.model.PhotosPost;
+import com.murfthe.photo.gallery.model.photospost.PhotosPost;
 import com.murfthe.photo.gallery.service.BaseService;
 import org.springframework.stereotype.Service;
 

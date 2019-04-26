@@ -1,8 +1,10 @@
-package com.murfthe.photo.gallery.model;
+package com.murfthe.photo.gallery.model.photospost;
+
+import com.murfthe.photo.gallery.model.BaseModel;
 
 import java.util.List;
 
-public class PhotosPost extends BaseModel{
+public class PhotosPost extends BaseModel {
     private List<String> tags;
     private List<String> photoPaths;
 
